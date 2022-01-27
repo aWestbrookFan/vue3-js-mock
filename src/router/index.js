@@ -20,12 +20,12 @@ import Layout from 'layouts/index.vue'
  */
 export const routes = [
   {
-    path: '/',
+    path: '/Login',
     component: () => import('views/Login/index.vue'),
     meta: { title: '登录', icon: 'el-icon-s-home' }
   },
   {
-    path: '/home',
+    path: '/',
     component: Layout,
     meta: { title: '导航', icon: 'el-icon-s-home' },
     children: [
@@ -93,6 +93,19 @@ export const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const type = to.path
+  if (type === '/') {
+    if (localStorage.getItem('user')) {
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    next() // 确保一定要有next()被调用
+  }
 })
 
 export default router

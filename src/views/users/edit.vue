@@ -1,13 +1,13 @@
 <template>
-  <detail :is-edit="true"></detail>
+     <detail :is-edit="true"></detail>
 </template>
 
 <script>
-import Detail from "./components/detail.vue";
+import Detail from './components/detail.vue'
 
 export default {
   components: {
-    Detail,
-  },
-};
+    Detail
+  }
+}
 </script>
